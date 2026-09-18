@@ -1,1 +1,88 @@
-<h1>Welcome to ZALIM-ARMY</h1>
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZALIM-ARMY FF Panel</title>
+    <style>
+        body {
+            background-color: #0f0f0f;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px #ff0055;
+        }
+        h2 {
+            color: #ff0055;
+        }
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            color: #fff;
+            border-radius: 5px;
+        }
+        .btn {
+            width: 95%;
+            padding: 12px;
+            margin: 10px 0;
+            background: #ff0055;
+            color: white;
+            border: none;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #e6004c;
+        }
+        .feature-box {
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>ZALIM-ARMY PANEL</h2>
+        <div id="login-section">
+            <p>अपनी Free Fire UID दर्ज करें:</p>
+            <input type="text" id="uid" placeholder="Enter Free Fire UID">
+            <button class="btn" onclick="loginPanel()">LOGIN PANEL</button>
+        </div>
+
+        <div id="panel-section" class="feature-box">
+            <p>Welcome, <span id="display-uid" style="color: #ff0055; font-weight: bold;"></span></p>
+            <hr style="border: 0.5px solid #333;">
+            <button class="btn" onclick="alert('Headshot Rate Boosted to 90%!')">⚡ Headshot Boost</button>
+            <button class="btn" onclick="alert('Sensitivity Optimized for Huawei Nova 5T!')">🎯 Pro Sensitivity</button>
+            <button class="btn" onclick="alert('Anti-Lag Enabled Successfully!')">🚀 Anti-Lag Fix</button>
+        </div>
+    </div>
+
+    <script>
+        function loginPanel() {
+            var uid = document.getElementById('uid').value;
+            if(uid.trim() === "") {
+                alert("कृपया पहले अपनी UID दर्ज करें!");
+            } else {
+                document.getElementById('login-section').style.display = "none";
+                document.getElementById('panel-section').style.display = "block";
+                document.getElementById('display-uid').innerText = uid;
+            }
+        }
+    </script>
+
+</body>
+</html>
