@@ -23,7 +23,7 @@
         h2 {
             color: #ff0055;
         }
-        input {
+        input, select {
             width: 90%;
             padding: 12px;
             margin: 10px 0;
@@ -49,6 +49,8 @@
         .feature-box {
             margin-top: 20px;
             display: none;
+            text-align: left;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -56,17 +58,38 @@
 
     <div class="container">
         <h2>ZALIM-ARMY PANEL</h2>
+        
         <div id="login-section">
             <p>अपनी Free Fire UID दर्ज करें:</p>
             <input type="text" id="uid" placeholder="Enter Free Fire UID">
-            <button class="btn" onclick="loginPanel()">LOGIN PANEL</button>
+            
+            <p>अपने मोबाइल का नाम दर्ज करें:</p>
+            <input type="text" id="phone-name" placeholder="e.g. Huawei Nova 5T">
+            
+            <p>RAM चुनें:</p>
+            <select id="ram-size">
+                <option value="4gb">4 GB RAM</option>
+                <option value="6gb">6 GB RAM</option>
+                <option value="8gb" selected>8 GB RAM</option>
+                <option value="12gb">12 GB RAM</option>
+            </select>
+
+            <button class="btn" onclick="loginPanel()">GENERATE SENSITIVITY</button>
         </div>
 
         <div id="panel-section" class="feature-box">
-            <p>Welcome, <span id="display-uid" style="color: #ff0055; font-weight: bold;"></span></p>
+            <p style="text-align: center;">Welcome, <span id="display-uid" style="color: #ff0055; font-weight: bold;"></span></p>
+            <p style="text-align: center; color: #00ffcc;">Device: <span id="display-phone"></span> (<span id="display-ram"></span>)</p>
             <hr style="border: 0.5px solid #333;">
-            <button class="btn" onclick="alert('Headshot Rate Boosted to 90%!')">⚡ Headshot Boost</button>
-            <button class="btn" onclick="alert('Sensitivity Optimized for Huawei Nova 5T!')">🎯 Pro Sensitivity</button>
+            
+            <h3 style="color: #ff0055; text-align: center;">🔥 Perfect Sensitivity 🔥</h3>
+            <p><b>General:</b> <span id="sens-gen">96</span></p>
+            <p><b>Red Dot:</b> <span id="sens-red">94</span></p>
+            <p><b>2x Scope:</b> <span id="sens-2x">90</span></p>
+            <p><b>4x Scope:</b> <span id="sens-4x">92</span></p>
+            <p><b>Fire Button:</b> <span id="fire-btn">48%</span></p>
+            
+            <button class="btn" onclick="alert('Headshot Rate Boosted to 99%!')">⚡ Headshot Boost</button>
             <button class="btn" onclick="alert('Anti-Lag Enabled Successfully!')">🚀 Anti-Lag Fix</button>
         </div>
     </div>
@@ -74,15 +97,36 @@
     <script>
         function loginPanel() {
             var uid = document.getElementById('uid').value;
-            if(uid.trim() === "") {
-                alert("कृपया पहले अपनी UID दर्ज करें!");
+            var phone = document.getElementById('phone-name').value;
+            var ram = document.getElementById('ram-size').value;
+
+            if(uid.trim() === "" || phone.trim() === "") {
+                alert("कृपया UID और मोबाइल का नाम दोनों दर्ज करें!");
             } else {
                 document.getElementById('login-section').style.display = "none";
                 document.getElementById('panel-section').style.display = "block";
                 document.getElementById('display-uid').innerText = uid;
+                document.getElementById('display-phone').innerText = phone;
+                document.getElementById('display-ram').innerText = ram.toUpperCase();
+
+                // RAM के हिसाब से आटोमेटिक सेंसिटिविटी सेट करना
+                if(ram === "4gb") {
+                    document.getElementById('sens-gen').innerText = "98";
+                    document.getElementById('sens-red').innerText = "95";
+                    document.getElementById('fire-btn').innerText = "42%";
+                } else if(ram === "8gb") {
+                    document.getElementById('sens-gen').innerText = "95";
+                    document.getElementById('sens-red').innerText = "92";
+                    document.getElementById('fire-btn').innerText = "48%";
+                } else {
+                    document.getElementById('sens-gen').innerText = "92";
+                    document.getElementById('sens-red').innerText = "90";
+                    document.getElementById('fire-btn').innerText = "50%";
+                }
             }
         }
     </script>
 
 </body>
 </html>
+ 
